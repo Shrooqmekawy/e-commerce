@@ -24,7 +24,7 @@
   @apply rounded-md;
 }
 .title {
-  @apply capitalize text-center mb-10 leading-tight text-3xl  text-black   font-semibold shadow-inner shadow-amber-700 p-5 mx-10 rounded-lg;
+  @apply capitalize text-center mb-10 leading-tight text-3xl  text-black   font-semibold  shadow-md p-5 mx-10 rounded-lg;
 }
 .cards {
   .cartadd {
@@ -45,11 +45,11 @@ span {
   @apply text-amber-700;
 }
 .section {
-  @apply container capitalize text-black my-10 rounded-md shadow-md shadow-amber-800 px-10 py-5;
+  @apply container capitalize text-black my-10 rounded-md shadow-sm shadow-amber-800 px-10 py-5;
 }
 .activelink {
   @apply bg-amber-600  text-white px-2 rounded-lg dark:text-amber-900 dark:bg-white;
 }
 .responsive {
-  @apply grid  grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-7 p-5;
+  @apply grid  grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 p-5;
 }
