@@ -15,9 +15,11 @@ export class CartComponent implements OnInit {
   private readonly cartservice = inject(CartService);
 
   cartItem: Icart = {} as Icart;
+  userId: string = '';
 
   ngOnInit(): void {
     this.getItem();
+    this.userId = localStorage.getItem('userorders')!;
   }
   getItem(): void {
     this.cartservice.getCartItems().subscribe({

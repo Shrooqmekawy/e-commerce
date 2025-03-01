@@ -9,7 +9,11 @@
       {{ "home.total" | translate }}
       {{ cartItem.totalCartPrice | currency : "GBP" }}
     </h3>
-    <button (click)="clearItem()" title="btn" class="btn">
+    <button
+      (click)="clearItem()"
+      title="btn"
+      class="bg-red-700 border-0 rounded-lg text-white px-6 py-2 hover:bg-red-800 transition-all duration-300 my-3"
+    >
       <i class="fas fa-trash"></i> {{ "home.clear_cart" | translate }}
     </button>
   </div>
@@ -77,8 +81,9 @@
       <img class="w-full" src="/Img/nodatafound.avif" alt="notfound" />
     </div>
   </div>
-  }
+  } @if(userId){
   <button [routerLink]="['/allorders']" title="btn" class="btn">
     {{ "home.my_order" | translate }}
   </button>
+  }
 </section>
