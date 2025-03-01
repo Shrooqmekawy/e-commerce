@@ -86,7 +86,7 @@
     } } @if(page==2){ @for (prod of products().slice(21,40) | search: searchTerm
     ; track prod.id) {
     <div
-      class="cards border border-amber-500 rounded-md shadow-md p-2 overflow-hidden relative"
+      class="cards border border-500 rounded-md shadow-md p-2 overflow-hidden relative"
     >
       <div [routerLink]="['/details', prod.id]" class="cardd">
         <div class="img">
@@ -97,7 +97,7 @@
           />
         </div>
         <div class="card my-5 text-[18px]">
-          <span class="text-white bg-amber-800 ms-10 px-1 text-sm rounded-sm">
+          <span class="bg-amber-800 ms-10 px-1 text-white text-sm rounded-sm">
             {{ prod.slug.split("-", 2).join(" ") }}
           </span>
           <h2>{{ prod.category.name }}</h2>
@@ -125,7 +125,7 @@
       <button
         title="btn"
         (click)="postWhishlistItems(prod.id)"
-        class="icon absolute top-0 end-0 me-2 text-3xl"
+        class="icon absolute top-0 end-0 me-2 text-3xl text-amber-600"
       >
         <i class="fa-heart" appChangeicon [itemId]="prod.id"></i>
       </button>
