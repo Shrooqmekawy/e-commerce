@@ -8,8 +8,8 @@
 
   @if (detailsprod()!) {
   <!-- imagecover -->
-  <div class="flex justify-center gap-x-10">
-    <div class="grid grid-rows-5 gap-y-4">
+  <div class="flex justify-center p-2 gap-x-10">
+    <div class="grid grid-rows-5 gap-y-1 flex-col gap-x-2">
       @for (img of detailsprod()!.images ; track $index ) {
 
       <div class="border w-20 h-20 overflow-hidden rounded-full">
@@ -76,6 +76,7 @@
               class="bg-amber-900 text-white mt-5 w-[90%] mx-auto block py-2 rounded-md"
             >
               {{ "home.add_to_cart" | translate }}
+              <i class="fas fa-basket-shopping"></i>
             </button>
             <button
               title="btn"
