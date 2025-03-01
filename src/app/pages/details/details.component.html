@@ -1,0 +1,98 @@
+<section class="section">
+  <div class="title">
+    <h1>
+      {{ "home.product" | translate }}
+      <span> {{ "home.details" | translate }} </span>
+    </h1>
+  </div>
+
+  @if (detailsprod()!) {
+  <!-- imagecover -->
+  <div class="flex justify-center gap-x-10">
+    <div class="grid grid-rows-5 gap-y-4">
+      @for (img of detailsprod()!.images ; track $index ) {
+
+      <div class="border w-20 h-20 overflow-hidden rounded-full">
+        <img
+          class="w-full rounded-full object-cover"
+          [src]="img"
+          alt="images"
+        />
+      </div>
+
+      }
+    </div>
+
+    <!-- card.................................................................................. -->
+
+    <div
+      class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl relative"
+    >
+      <img
+        class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+        [src]="detailsprod()!.imageCover"
+        [alt]=""
+      />
+
+      <div class="flex flex-col justify-between p-4 leading-normal">
+        <div class="px-5 pb-5">
+          <h5 class="text-xl font-semibold tracking-tight text-gray-900">
+            {{ detailsprod()!.title }}
+          </h5>
+          <span class="text-sm text-gray-100 bg-amber-600 px-2 rounded-lg">
+            {{ detailsprod()!.category.name }}
+          </span>
+          <p class="text-lg tracking-tight text-gray-900">
+            {{ detailsprod()!.description }}
+          </p>
+
+          <div class="flex items-center mt-2.5 mb-5">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+              <svg
+                class="w-4 h-4 text-yellow-300"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                />
+              </svg>
+            </div>
+            <span
+              class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm"
+              >{{ detailsprod()!.ratingsAverage }}</span
+            >
+          </div>
+          <div class="items-center justify-between">
+            <div>
+              <span class="text-3xl font-bold text-gray-900">{{
+                detailsprod()!.price | currency : "GBP"
+              }}</span>
+            </div>
+            <button
+              (click)="addToCart(detailsprod()!.id)"
+              class="bg-amber-900 text-white mt-5 w-[90%] mx-auto block py-2 rounded-md"
+            >
+              {{ "home.add_to_cart" | translate }}
+            </button>
+            <button
+              title="btn"
+              (click)="postWhishlistItems(detailsprod()!.id)"
+              class="icon absolute top-[50%] end-0 me-3 mt-3 text-3xl text-amber-400 focus:text-amber-600 translate-y-5"
+            >
+              <i
+                class="fa-heart"
+                appChangeicon
+                [itemId]="detailsprod()!.id"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- card.................................................................................. -->
+  }
+</section>

@@ -1,0 +1,220 @@
+<nav
+  class="w-full shadow-md shadow-amber-700 rounded-b-md px-2 dark:bg-amber-900 dark:text-white dark:shadow-none capitalize"
+>
+  <div
+    class="container max-w-screen-xl flex flex-wrap p-3 items-center justify-between"
+  >
+    <div class="img flex justify-between items-center">
+      <div routerLink="/home" title="home" class="ms-3 w-[20%]">
+        <img
+          src="/Img/bazaar-logo-dark-amber.png"
+          class="block dark:hidden w-full"
+          alt="Light Mode Logo"
+        />
+        <img
+          src="/Img/bazaar-logo-white.png"
+          class="hidden dark:block w-full"
+          alt="Dark Mode Logo"
+        />
+      </div>
+
+      <button
+        title="btn"
+        data-collapse-toggle="navbar-default"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden text-amber-900 dark:text-white"
+        aria-controls="navbar-default"
+        aria-expanded="false"
+      >
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div
+      class="hidden flex-grow items-center justify-around w-full md:flex md:w-auto"
+      id="navbar-default"
+    >
+      @if(isLogin()){
+      <ul
+        class="ms-auto font-medium flex flex-col p-4 md:p-0 mt-4 justify-center md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 text-lg"
+      >
+        <li>
+          <a
+            routerLinkActive="activelink"
+            routerLink="/home"
+            class="links"
+            aria-current="page"
+            >{{ "navbar.home" | translate }}
+          </a>
+        </li>
+        <li>
+          <a routerLinkActive="activelink" routerLink="/brands" class="links">{{
+            "navbar.brands" | translate
+          }}</a>
+        </li>
+
+        <li>
+          <a
+            routerLinkActive="activelink"
+            routerLink="/category"
+            class="links"
+            >{{ "navbar.category" | translate }}</a
+          >
+        </li>
+        <li>
+          <a
+            routerLinkActive="activelink"
+            routerLink="/products"
+            class="links"
+            >{{ "navbar.products" | translate }}</a
+          >
+        </li>
+      </ul>
+      }
+      <!-- logo -->
+      <ul
+        class="ms-auto font-medium flex flex-col-reverse p-4 md:p-0 mt-4 justify-center rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0"
+      >
+        @if(!isLogin()){
+        <li>
+          <a
+            routerLinkActive="activelink"
+            routerLink="/login"
+            class="links"
+            aria-current="page"
+            >{{ "navbar.login" | translate }}</a
+          >
+        </li>
+        <li>
+          <a
+            routerLinkActive="activelink"
+            routerLink="/register"
+            class="links"
+            aria-current="page"
+            >{{ "navbar.register" | translate }}</a
+          >
+        </li>
+        } @else{
+        <li class="relative">
+          <a
+            routerLinkActive="activelink"
+            routerLink="/cart"
+            class="links text-xl"
+            ><i class="fas fa-bag-shopping"></i
+          ></a>
+          <span
+            class="absolute text-white text-xs bg-amber-600 rounded-full px-1 font-semibold top-0 md:-end-[30%]"
+            >{{ cartnumber() }}</span
+          >
+        </li>
+        <li class="relative">
+          <a
+            routerLinkActive="activelink"
+            routerLink="/wishlist"
+            class="links text-xl"
+            ><i class="fas fa-heart"></i
+          ></a>
+          <div
+            class="absolute text-white text-xs bg-amber-600 rounded-full px-1 font-semibold top-0 md:-end-[30%]"
+          >
+            {{ wishlistnumber() }}
+          </div>
+        </li>
+        <li>
+          <a
+            role="button"
+            (click)="auth.logout()"
+            routerLinkActive="activelink"
+            routerLink="/login"
+            class="links"
+            aria-current="page"
+            >{{ "navbar.logout" | translate }}</a
+          >
+        </li>
+        }
+      </ul>
+      <div class="endnavbar flex items-center">
+        <div
+          id="dropdownDefaultButton"
+          data-dropdown-toggle="dropdown"
+          class="text-black dark:text-white focus:outline-none font-medium rounded-lg text-sm text-center inline-flex items-center justify-end ms-5"
+          role="button"
+        >
+          {{ "navbar.lang" | translate }}
+          <svg
+            class="w-2.5 h-2.5 ms-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 10 6"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 4 4 4-4"
+            />
+          </svg>
+        </div>
+
+        <!-- Dropdown menu -->
+        <div
+          id="dropdown"
+          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44"
+        >
+          <ul
+            class="py-2 text-sm text-black"
+            aria-labelledby="dropdownDefaultButton"
+          >
+            <li [class.lang]="currentLang('ar')" (click)="changedir('ar')">
+              <a
+                class="block px-4 py-2 focus:bg-amber-700 focus:text-white cursor-pointer active:bg-amber-700"
+                >arabic</a
+              >
+            </li>
+            <li [class.lang]="currentLang('en')" (click)="changedir('en')">
+              <a
+                class="block px-4 py-2 focus:bg-amber-700 focus:text-white cursor-pointer active:bg-amber-700"
+                >english</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <button
+          (click)="getTheme()"
+          title="darkmode"
+          class="dark ms-5 dark:text-white text-black rounded-md text-lg"
+          role="checkbox"
+          aria-checked="false"
+        >
+          @if (!isDark) {
+          <div class="moon">
+            <i class="fa-solid fa-moon transition-all duration-300 p-2"> </i>
+          </div>
+
+          } @else {
+          <div class="sun">
+            <i class="fa-solid fa-sun transition-all duration-300 p-2"> </i>
+          </div>
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

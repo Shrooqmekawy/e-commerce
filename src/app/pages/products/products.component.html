@@ -1,0 +1,150 @@
+<section class="section">
+  <div class="title">
+    <h1>
+      {{ "home.show_our" | translate }}
+      <span class="text-amber-900"> {{ "home.product" | translate }}</span>
+    </h1>
+  </div>
+  <!-- search -->
+  <div class="max-w-md mx-auto my-10">
+    <label
+      for="default-search"
+      class="mb-2 text-sm font-medium text-gray-900 sr-only"
+      >Search</label
+    >
+    <div class="relative">
+      <div
+        class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+      >
+        <i class="fas fa-search text-gray-400 h-4 w-4"></i>
+      </div>
+      <input
+        [(ngModel)]="searchTerm"
+        type="search"
+        id="default-search"
+        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-amber-500 focus:border-x-amber-600"
+        placeholder="Search category brands ......"
+        required
+      />
+      <button
+        type="submit"
+        class="text-white absolute end-2.5 bottom-2.5 bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-500 font-medium rounded-lg text-sm px-4 py-2"
+      >
+        {{ "home.search" | translate }}
+      </button>
+    </div>
+  </div>
+  <!-- search -->
+  <div class="responsive">
+    @if(page==1){ @for (prod of products().slice(0,20)| search: searchTerm ;
+    track prod.id) {
+    <div
+      class="cards border border-500 rounded-md shadow-md p-2 overflow-hidden relative"
+    >
+      <div [routerLink]="['/details', prod.id]" class="cardd">
+        <div class="img">
+          <img
+            class="w-full h-[250px] object-contain"
+            [src]="prod.imageCover"
+            [alt]="prod.title"
+          />
+        </div>
+        <div class="card my-5 text-[18px]">
+          <span class="bg-amber-800 ms-10 px-1 text-white text-sm rounded-sm">
+            {{ prod.slug.split("-", 2).join(" ") }}
+          </span>
+          <h2>{{ prod.category.name }}</h2>
+
+          <h3>{{ prod.title.split("-", 4).join(" ") }}</h3>
+
+          <div class="px-2">
+            <div class="flex justify-between items-center font-bold">
+              <span>{{ prod.price | currency : "GBP" }} </span>
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-300"></i>
+                <span>{{ prod.ratingsAverage }} </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        (click)="addToCart(prod.id)"
+        class="cartadd bg-amber-900 text-white w-[90%] mx-auto block py-2 rounded-md"
+      >
+        {{ "home.add_to_cart" | translate }}
+      </button>
+      <button
+        title="btn"
+        (click)="postWhishlistItems(prod.id)"
+        class="icon absolute top-0 end-0 me-2 text-3xl text-amber-600"
+      >
+        <i class="fa-heart" appChangeicon [itemId]="prod.id"></i>
+      </button>
+    </div>
+    } } @if(page==2){ @for (prod of products().slice(21,40) | search: searchTerm
+    ; track prod.id) {
+    <div
+      class="cards border border-amber-500 rounded-md shadow-md p-2 overflow-hidden relative"
+    >
+      <div [routerLink]="['/details', prod.id]" class="cardd">
+        <div class="img">
+          <img
+            class="w-full h-[250px] object-contain"
+            [src]="prod.imageCover"
+            [alt]="prod.title"
+          />
+        </div>
+        <div class="card my-5 text-[18px]">
+          <span class="text-white bg-amber-800 ms-10 px-1 text-sm rounded-sm">
+            {{ prod.slug.split("-", 2).join(" ") }}
+          </span>
+          <h2>{{ prod.category.name }}</h2>
+
+          <h3>{{ prod.title.split("-", 4).join(" ") }}</h3>
+
+          <div class="px-2">
+            <div class="flex justify-between items-center font-bold">
+              <span>{{ prod.price | currency : "GBP" }} </span>
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-300"></i>
+                <span>{{ prod.ratingsAverage }} </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        (click)="addToCart(prod.id)"
+        class="cartadd bg-amber-900 text-white w-[90%] mx-auto block py-2 rounded-md"
+      >
+        {{ "home.add_to_cart" | translate }}
+      </button>
+      <button
+        title="btn"
+        (click)="postWhishlistItems(prod.id)"
+        class="icon absolute top-0 end-0 me-2 text-3xl"
+      >
+        <i class="fa-heart" appChangeicon [itemId]="prod.id"></i>
+      </button>
+    </div>
+    } }
+  </div>
+</section>
+<!-- paages -->
+<div
+  class="flex items-center -space-x-px h-8 text-sm mb-10 mx-auto justify-center gap-3"
+>
+  <button (click)="getpage(1)">
+    <a
+      class="flex items-center py-3 px-4 justify-center leading-tight text-amber-800 bg-white border border-500 hover:bg-amber-600 hover:text-white rounded-full"
+      >1</a
+    >
+  </button>
+  <button (click)="getpage(2)">
+    <a
+      class="flex items-center py-3 px-4 justify-center leading-tight text-amber-800 bg-white border border-500 hover:bg-amber-600 hover:text-white rounded-full"
+      >2</a
+    >
+  </button>
+</div>

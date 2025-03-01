@@ -1,0 +1,94 @@
+<section class="section">
+  <div class="title">
+    <h1>
+      {{ "home.checkout" | translate }}
+      <span class="text-orang-900"> {{ "home.ur_order" | translate }}...</span>
+    </h1>
+  </div>
+
+  <form [formGroup]="checkoutforms">
+    <div>
+      <label class="label" for="details">{{
+        "home.details" | translate
+      }}</label>
+      <textarea
+        formControlName="details"
+        type="text"
+        name="details"
+        id="details"
+        class="input"
+        placeholder="type ur message"
+      ></textarea>
+    </div>
+    <div class="mb-6">
+      @let phone =checkoutforms.get('phone');
+      <label for="phone" class="label">{{ "home.phone" | translate }}:</label>
+      <input
+        formControlName="phone"
+        type="tel"
+        id="phone"
+        class="input"
+        placeholder="type ur phone"
+      />
+      @if(phone?.errors && phone?.touched){
+      <div
+        class="my-3 flex items-center p-2 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400"
+        role="alert"
+      >
+        <div>
+          @if(phone?.getError('required')){
+          <p class="text-[16px] text-red-700">
+            {{ "auth.required" | translate }}
+          </p>
+          } @else if (phone?.getError('pattern')) {
+          <p class="text-[16px] text-red-700">
+            {{ "auth.num_valid" | translate }}
+          </p>
+          }
+        </div>
+      </div>
+      }
+    </div>
+    <div class="mb-6">
+      @let citycontrol= checkoutforms.get('city');
+
+      <label for="city" class="label"> {{ "home.adress" | translate }}:</label>
+      <input
+        formControlName="city"
+        type="text"
+        id="city"
+        class="input"
+        placeholder="type ur adress"
+      />
+      <!-- alert -->
+      @if(citycontrol?.errors && citycontrol?.touched){
+      <div
+        class="my-3 flex items-center p-2 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400"
+        role="alert"
+      >
+        <div>
+          @if(citycontrol?.getError('required')){
+          <p class="text-[16px] text-red-700">
+            {{ "auth.required" | translate }}
+          </p>
+          } @else if (citycontrol?.getError('minlength') ||
+          citycontrol?.getError('maxlength')) {
+          <p class="text-[16px] text-red-700">
+            {{ "home.city_valid" | translate }}
+          </p>
+          }
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="flex gap-10">
+      <button [disabled]="isLoading" (click)="onSubmitcard()" class="btn">
+        {{ "home.visa" | translate }}
+      </button>
+      <button [disabled]="isLoading" (click)="onSubmitcash()" class="btn">
+        {{ "home.cash" | translate }}
+      </button>
+    </div>
+  </form>
+</section>

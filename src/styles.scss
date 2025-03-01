@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+@import "ngx-toastr/toastr";
+
+.btn {
+  @apply bg-amber-700 border-0 rounded-lg text-white px-6 py-2 hover:bg-amber-800 transition-all duration-300 my-3;
+}
+.label {
+  @apply block mb-2 text-[16px]   text-amber-700;
+}
+.input {
+  @apply text-black bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-amber-500  focus:border-amber-500 focus:shadow-sm  w-full p-2.5;
+}
+.links {
+  @apply block py-2 px-3 dark:text-white text-black md:p-0;
+}
+.lang {
+  background: #b95e04;
+  color: whitesmoke;
+  margin: 0 5px;
+  @apply rounded-md;
+}
+.title {
+  @apply capitalize text-center mb-10 leading-tight text-3xl  text-black   font-semibold shadow-inner shadow-amber-700 p-5 mx-10 rounded-lg;
+}
+.cards {
+  .cartadd {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+  }
+  &:hover {
+    .cartadd {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+@media (prefers-color-scheme: light) {
+}
+span {
+  @apply text-amber-700;
+}
+.section {
+  @apply container capitalize text-black my-10 rounded-md shadow-md shadow-amber-800 px-10 py-5;
+}
+.activelink {
+  @apply bg-amber-600  text-white px-2 rounded-lg dark:text-amber-900 dark:bg-white;
+}
+.responsive {
+  @apply grid  sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-7 p-5;
+}

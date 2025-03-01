@@ -1,0 +1,73 @@
+<section class="section">
+  <div class="title">
+    <h1>
+      {{ "home.show_our" | translate }}
+      <span>{{ "home.brands" | translate }} </span>
+    </h1>
+  </div>
+  <div class="responsive">
+    @if (page===1) { @for (branditems of brands().slice(0,20) ; track
+    branditems._id) {
+
+    <div
+      class="item relative overflow-hidden shadow-lg group rounded-lg border border-t border-amber-600"
+    >
+      <div class="img">
+        <img
+          class="w-full object-contain h-60"
+          [src]="branditems.image"
+          [alt]="branditems.slug"
+        />
+      </div>
+      <div
+        class="layer flex justify-center items-center absolute top-[150%] bottom-0 start-0 end-0 bg-white/90 text-center transition-all duration-300 ease-linear group-hover:top-0"
+      >
+        <h2 class="text-xl font-semibold text-amber-800 capitalize">
+          {{ branditems.name }}
+        </h2>
+      </div>
+    </div>
+
+    } } @else if(page===2){ @for (branditems of brands().slice(21,40) ; track
+    branditems._id) {
+
+    <div
+      class="item relative overflow-hidden shadow-lg group rounded-lg border border-t border-amber-600"
+    >
+      <div class="img">
+        <img
+          class="w-full object-contain h-60"
+          [src]="branditems.image"
+          [alt]="branditems.slug"
+        />
+      </div>
+      <div
+        class="layer flex justify-center items-center absolute top-[150%] bottom-0 start-0 end-0 bg-white/90 text-center transition-all duration-600 ease-linear group-hover:top-0"
+      >
+        <h2 class="text-xl font-semibold text-amber-800 capitalize">
+          {{ branditems.name }}
+        </h2>
+      </div>
+    </div>
+
+    } }
+  </div>
+</section>
+<!-- ....................................................................... -->
+
+<div
+  class="flex items-center -space-x-px h-8 text-sm mb-10 mx-auto justify-center gap-3"
+>
+  <button (click)="getpage(1)">
+    <a
+      class="flex items-center py-3 px-4 justify-center leading-tight text-amber-800 bg-white border border-amber-300 hover:bg-amber-600 hover:text-white rounded-full"
+      >1</a
+    >
+  </button>
+  <button (click)="getpage(2)">
+    <a
+      class="flex items-center py-3 px-4 justify-center leading-tight text-amber-800 bg-white border border-amber-300 hover:bg-amber-600 hover:text-white rounded-full"
+      >2</a
+    >
+  </button>
+</div>

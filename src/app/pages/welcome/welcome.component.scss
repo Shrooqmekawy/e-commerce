@@ -1,0 +1,29 @@
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.welcome-container {
+  @apply flex flex-col p-5 justify-center items-center h-screen bg-[#fbf9f2] text-center;
+}
+
+h1 {
+  color: #d35400;
+  font-size: 2.5rem;
+  font-weight: bold;
+  animation: bounce 3s ease-in-out infinite;
+  font-style: italic;
+}

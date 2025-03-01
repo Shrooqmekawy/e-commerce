@@ -1,0 +1,180 @@
+<section class="section">
+  <!-- search -->
+  <div class="max-w-md mx-auto my-10">
+    <div class="relative">
+      <div
+        class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+      >
+        <i class="fas fa-search text-gray-600 h-4 w-4"></i>
+      </div>
+      <input
+        [(ngModel)]="searchTerm"
+        type="search"
+        id="default-search"
+        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-amber-500 focus:border-x-amber-600"
+        placeholder="Search of items"
+        required
+      />
+      <button
+        type="submit"
+        class="text-white absolute end-2.5 bottom-2.5 bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2"
+      >
+        {{ "home.search" | translate }}
+      </button>
+    </div>
+  </div>
+  <!-- search -->
+  <div>
+    <div class="title">
+      <h1>
+        {{ "home.our" | translate }}
+        <span>{{ "home.offers" | translate }} </span>
+      </h1>
+    </div>
+
+    <div class="p-2">
+      <owl-carousel-o [options]="customslider">
+        @for (img of image ; track $index) {
+        <ng-template carouselSlide>
+          <img
+            class="w-full object-contain rounded-md h-[300px]"
+            [src]="img"
+            alt="category"
+        /></ng-template>
+        }
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="title">
+    <h1>
+      {{ "home.show_our" | translate }}
+      <span>{{ "home.category" | translate }} </span>
+    </h1>
+  </div>
+
+  <owl-carousel-o [options]="customOptions">
+    @for (cat of category() ; track cat._id) {
+    <ng-template carouselSlide>
+      <div class="mx-2">
+        <img
+          class="w-full h-[250px] object-cover"
+          [src]="cat.image"
+          [alt]="cat.name"
+        />
+        <h3 class="text-center hover: block my-3">
+          {{ cat.name }}
+        </h3>
+      </div>
+    </ng-template>
+
+    }
+  </owl-carousel-o>
+</section>
+
+@defer {
+<section class="block text-black">
+  <div class="title">
+    <h1>
+      {{ "home.recommended_for" | translate }}
+      <span>{{ "home.you" | translate }} </span>
+    </h1>
+  </div>
+
+  <!-- product coursel -->
+
+  <div class="m-10">
+    <owl-carousel-o [options]="customOptionsProduct">
+      @for (prod of products().slice(0,10) | search: searchTerm ; track prod.id)
+      {
+      <ng-template carouselSlide>
+        <div
+          class="cards border border-amber-300 rounded-md shadow-md p-1 mx-2 overflow-hidden relative"
+        >
+          <div [routerLink]="['/details', prod.id]" class="cardd">
+            <div class="img">
+              <img
+                class="w-full h-[250px] object-contain"
+                [src]="prod.imageCover"
+                [alt]="prod.title"
+              />
+            </div>
+            <div class="card my-5 text-[18px]">
+              <span
+                class="bg-amber-600 ms-10 text-sm px-1 rounded-sm text-white"
+                >{{ prod.slug.split("-", 2).slice(1, 2) }}
+              </span>
+              <h2>
+                {{ prod.category.name }}
+              </h2>
+
+              <div class="px-2">
+                <div class="flex justify-between items-center font-bold">
+                  <span>{{ prod.price | currency : "GBP" }} </span>
+                  <div class="flex items-center">
+                    <i class="fas fa-star text-yellow-300"></i>
+                    <span>{{ prod.ratingsAverage }} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            (click)="addToCart(prod.id)"
+            class="cartadd bg-amber-700 text-white w-[90%] mx-auto block py-2 rounded-md"
+          >
+            <i class="fas fa-basket-shopping"></i>
+            {{ "home.add_to_cart" | translate }}
+          </button>
+          <button
+            title="btn"
+            (click)="postWhishlistItems(prod.id)"
+            class="icon absolute top-0 end-0 me-2 text-3xl text-amber-600 hover:text-amber-600"
+          >
+            <i
+              class="fa-heart cursor-pointer text-2xl"
+              appChangeicon
+              [itemId]="prod.id"
+            ></i>
+          </button>
+        </div>
+      </ng-template>
+      }
+    </owl-carousel-o>
+  </div>
+</section>
+} @placeholder {
+<div class="text-center text-2xl text-amber-500 my-10">
+  <i class="fas fa-spinner fa-spin"></i>
+</div>
+}
+<!-- product coursel -->
+<!-- brand coursel -->
+@defer(on viewport) {
+<section class="section">
+  <div class="title">
+    <h1>
+      {{ "home.show_our" | translate }}
+      <span>{{ "home.brands" | translate }} </span>
+    </h1>
+  </div>
+
+  <owl-carousel-o [options]="customOptions">
+    @for (brand of brands().slice(0,10) ; track brand._id) {
+    <ng-template carouselSlide>
+      <div class="ms-2 p-2">
+        <img class="w-full h-[150px] object-contain" [src]="brand.image" />
+      </div>
+    </ng-template>
+
+    }
+  </owl-carousel-o>
+</section>
+}@placeholder {
+<div class="text-center text-2xl text-amber-500 my-10">
+  <i class="fas fa-spinner fa-spin"></i>
+</div>
+
+}

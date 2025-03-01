@@ -1,0 +1,64 @@
+<section class="section">
+  <div class="title">
+    <h1>{{ "home.favorite_products" | translate }} ....</h1>
+  </div>
+
+  <div class="responsive">
+    @if(favproducts()){ @for (favprod of favproducts().slice(0,10) ; track
+    favprod._id) {
+    <div
+      class="cards border border-amber-500 rounded-md shadow-md p-2 overflow-hidden relative"
+    >
+      <div class="cardd">
+        <div class="img">
+          <img
+            class="w-full h-[250px] object-contain"
+            [src]="favprod.imageCover"
+            [alt]="favprod.title"
+          />
+        </div>
+        <div class="card my-5 text-[18px]">
+          <span>{{ favprod.category.name }}</span>
+          <span class="bg-amber-500 ms-10 px-2 rounded-md text-white"
+            >{{ favprod.slug.split("-", 2).slice(1, 2).join(" ") }}
+          </span>
+          <h3>{{ favprod.title }}</h3>
+
+          <div class="px-2">
+            <div class="flex justify-between items-center font-bold">
+              <span>{{ favprod.price | currency : "GBP" }} </span>
+              <div class="flex items-center">
+                <i class="fas fa-star text-amber-500"></i>
+                <span>{{ favprod.ratingsAverage }} </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        (click)="addToCart(favprod.id)"
+        class="cartadd bg-amber-900 text-white w-[90%] mx-auto block py-2 rounded-md"
+      >
+        {{ "home.add_to_cart" | translate }}
+      </button>
+      <button
+        title="btn"
+        (click)="removeitems(favprod.id)"
+        class="icon absolute top-0 end-0 me-2 text-3xl text-amber-600"
+      >
+        <i class="fas fa-heart"></i>
+      </button>
+    </div>
+    } }@else {
+    <div class="flex-col justify-center items-center">
+      <div class="title">
+        <h1>{{ "home.shopping_to_get_ur_favorite_products" | translate }}</h1>
+      </div>
+
+      <div class="text-center w-[50%] mx-auto">
+        <img class="w-full" src="/Img/nodatafound.avif" alt="notfound" />
+      </div>
+    </div>
+    }
+  </div>
+</section>

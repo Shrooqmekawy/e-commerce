@@ -1,0 +1,85 @@
+<section class="section">
+  <div class="title">
+    <h1>{{ "home.my_order_item" | translate }}</h1>
+  </div>
+  <div class="responsive">
+    @if(orderItemsinformaion()){ @for (item of orderItemsinformaion().slice(-3);
+    track $index) {
+
+    <div
+      class="item p-5 rounded-lg bg-white shadow-lg shadow-amber-600 my-10 capitalize text-lg break-words"
+    >
+      <div class="flex justify-between my-5">
+        <h1>
+          {{ "allorders.numoforder" | translate }}:
+          <span>{{ $index + 1 }}</span>
+        </h1>
+        <p>
+          {{ "allorders.product" | translate }}:
+          <span>{{ item.cartItems.length }}</span>
+        </p>
+      </div>
+      <div class="grid grid-cols-4">
+        @for (imgprod of item.cartItems ; track $index) {
+
+        <div class="prod items-center">
+          <img
+            class="w-20 h-20 object-contain rounded-md"
+            [src]="imgprod.product.imageCover"
+            [alt]="imgprod.product.title"
+          />
+          <p>
+            {{ imgprod.product.title.split(" ").slice(1, 2).join(" ") }}
+          </p>
+        </div>
+        }
+      </div>
+      <div class="info text-sm my-5">
+        <p>
+          {{ "allorders.date" | translate }}:
+          <span>{{ item.createdAt | date }}</span>
+        </p>
+        <p>
+          {{ "allorders.name" | translate }}: <span>{{ item.user.name }}</span>
+        </p>
+        <p>
+          {{ "allorders.email" | translate }}:
+          <span>{{ item.user.email }}</span>
+        </p>
+        <p>
+          {{ "allorders.phone" | translate }}:
+          <span>{{ item.user.phone }}</span>
+        </p>
+        <p>
+          {{ "allorders.address" | translate }}:
+          <span>{{ item.shippingAddress.city }}</span>
+        </p>
+        <p>
+          {{ "home.details" | translate }}:
+          <span>{{ item.shippingAddress.details }}</span>
+        </p>
+      </div>
+      <div class="pay">
+        <p>
+          {{ "allorders.payment" | translate }}:
+          <span>{{ item.paymentMethodType }}</span>
+        </p>
+
+        <p>
+          {{ "allorders.total" | translate }}:
+          <span>{{ item.totalOrderPrice | currency : "GBP" }}</span>
+        </p>
+      </div>
+    </div>
+    } }@else {
+    <div class="flex-col justify-center items-center">
+      <div class="title">
+        <h1>{{ "home.shopping_to_get_ur_cart" | translate }}</h1>
+      </div>
+      <div class="text-center w-[50%] mx-auto">
+        <img class="w-full" src="/Img/nodatafound.avif" alt="notfound" />
+      </div>
+    </div>
+    }
+  </div>
+</section>
