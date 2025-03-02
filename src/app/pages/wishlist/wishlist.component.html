@@ -5,9 +5,7 @@
 
   <div class="responsive">
     @if(favproducts()){ @for (favprod of favproducts() ; track favprod._id) {
-    <div
-      class="cards border border-purple-500 rounded-md shadow-md p-2 overflow-hidden relative"
-    >
+    <div class="cards rounded-md shadow-lg p-2 overflow-hidden relative">
       <div class="cardd">
         <div class="img">
           <img
@@ -18,7 +16,7 @@
         </div>
         <div class="card my-5 text-[18px]">
           <span>{{ favprod.category.name }}</span>
-          <span class="bg-purple-500 ms-10 px-2 rounded-md text-white"
+          <span class="bg-black text-xs ms-10 px-2 rounded-md text-white"
             >{{ favprod.slug.split("-", 2).slice(1, 2).join(" ") }}
           </span>
           <h3>{{ favprod.title }}</h3>
@@ -27,7 +25,7 @@
             <div class="flex justify-between items-center font-bold">
               <span>{{ favprod.price | currency : "GBP" }} </span>
               <div class="flex items-center">
-                <i class="fas fa-star text-purple-500"></i>
+                <i class="fas fa-star text-yellow-500"></i>
                 <span>{{ favprod.ratingsAverage }} </span>
               </div>
             </div>
@@ -36,7 +34,7 @@
       </div>
       <button
         (click)="addToCart(favprod.id)"
-        class="cartadd bg-purple-900 text-white w-[90%] mx-auto block py-2 rounded-md"
+        class="bg-white text-black border-2 hover:bg-black hover:text-white border-black w-[90%] mx-auto block py-2 rounded-md mt-5 cartadd"
       >
         {{ "home.add_to_cart" | translate }}
         <i class="fas fa-basket-shopping"></i>
@@ -44,7 +42,7 @@
       <button
         title="btn"
         (click)="removeitems(favprod.id)"
-        class="icon absolute top-0 end-0 me-2 text-3xl text-purple-600"
+        class="icon absolute top-0 end-0 me-2 text-3xl text-red-800"
       >
         <i class="fas fa-heart"></i>
       </button>

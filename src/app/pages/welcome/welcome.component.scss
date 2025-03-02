@@ -17,11 +17,11 @@
 }
 
 .welcome-container {
-  @apply flex flex-col p-5 justify-center items-center h-screen bg-[#fbf9f2] text-center;
+  @apply flex flex-col p-5 justify-center items-center h-screen  text-center;
 }
 
 h1 {
-  color: #d35400;
+  color: #000000;
   font-size: 2.5rem;
   font-weight: bold;
   animation: bounce 3s ease-in-out infinite;

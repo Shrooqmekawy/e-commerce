@@ -1,12 +1,12 @@
 <section class="section">
   <div
-    class="grid sm:grid-cols-1 md:grid-cols-2 rounded-lg gap-3 p-5 shadow-lg shadow-purple-800"
+    class="grid sm:grid-cols-1 md:grid-cols-2 rounded-lg gap-3 p-5 shadow-lg"
   >
     <div>
       <img class="w-full rounded-lg" src="/Img/logints.png" alt="signup" />
     </div>
     <div class="rounded-lg p-3 py-3">
-      <h1 class="font-medium text-3xl text-center text-purple-800">
+      <h1 class="font-medium text-3xl text-center text-gray-800">
         {{ "auth.register" | translate }}
       </h1>
       <form [formGroup]="register" (ngSubmit)="submitForm()">
@@ -26,17 +26,17 @@
           <!-- alert -->
           @if(namecontrol?.errors && namecontrol?.touched){
           <div
-            class="my-3 flex items-center p-2 mb-4 text-sm text-purple-800 border border-purple-300 rounded-lg bg-purple-50 dark:text-purple-400"
+            class="my-3 flex items-center p-2 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400"
             role="alert"
           >
             <div>
-              @if(namecontrol?.getError('requipurple')){
-              <p class="text-[16px] text-purple-700">
-                {{ "auth.requipurple" | translate }}
+              @if(namecontrol?.getError('required')){
+              <p class="text-[16px] text-red-700">
+                {{ "auth.required" | translate }}
               </p>
               } @else if (namecontrol?.getError('minlength') ||
               namecontrol?.getError('maxlength')) {
-              <p class="text-[16px] text-purple-700">
+              <p class="text-[16px] text-red-700">
                 {{ "auth.name_valid" | translate }}
               </p>
               }
@@ -58,16 +58,16 @@
           />
           @if(emailControl?.errors && emailControl?.touched){
           <div
-            class="my-3 flex items-center p-2 mb-4 text-sm text-purple-800 border border-purple-300 rounded-lg bg-purple-50 dark:text-purple-400"
+            class="my-3 flex items-center p-2 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400"
             role="alert"
           >
             <div>
-              @if(emailControl?.getError('requipurple')){
-              <p class="text-[16px] text-purple-700">
-                {{ "auth.requipurple" | translate }}
+              @if(emailControl?.getError('required')){
+              <p class="text-[16px] text-gray-700">
+                {{ "auth.required" | translate }}
               </p>
               } @else if (emailControl?.getError('email')) {
-              <p class="text-[16px] text-purple-700">
+              <p class="text-[16px] text-gray-700">
                 {{ "auth.valid_email" | translate }}
               </p>
               }
@@ -76,36 +76,38 @@
           }
         </div>
         <div class="my-6 relative">
-          @let password=register.get('password');
-          <label for="password" class="label"
-            >{{ "auth.password" | translate }}:</label
-          >
-          <input
-            formControlName="password"
-            type="password"
-            id="password"
-            class="input"
-            placeholder="type ur password"
-          />
-          <div
-            class="absolute end-2.5 bottom-2.5"
-            title="passshow"
-            appChangetypepass
-          >
-            <i class="fa-regular fa-eye text-purple-700 cursor-pointer"></i>
+          @let password = register.get('password');
+          <label for="password" class="label">
+            {{ "auth.password" | translate }}:
+          </label>
+          <div class="relative flex items-center">
+            <input
+              formControlName="password"
+              type="password"
+              id="password"
+              class="input w-full"
+              placeholder="type your password"
+            />
+            <div
+              class="absolute end-2.5 top-1/2 -translate-y-1/2"
+              title="passshow"
+              appChangetypepass
+            >
+              <i class="fa-regular fa-eye text-black cursor-pointer"></i>
+            </div>
           </div>
-          @if(password?.errors && password?.touched){
+          @if (password?.errors && password?.touched) {
           <div
-            class="my-3 flex items-center p-2 mb-4 text-sm text-purple-800 border border-purple-300 rounded-lg bg-purple-50 dark:text-purple-400"
+            class="my-3 flex items-center p-2 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400"
             role="alert"
           >
             <div>
-              @if(password?.getError('requipurple')){
-              <p class="text-[16px] text-purple-700">
-                {{ "auth.requipurple" | translate }}
+              @if (password?.getError('required')) {
+              <p class="text-[16px] text-red-700">
+                {{ "auth.required" | translate }}
               </p>
               } @else if (password?.getError('pattern')) {
-              <p class="text-[16px] text-purple-700">
+              <p class="text-[16px] text-red-700">
                 {{ "auth.valid_pass" | translate }}
               </p>
               }
@@ -113,45 +115,47 @@
           </div>
           }
         </div>
+
         <div class="my-6 relative">
-          @let repassword=register.get('rePassword');
-          <label for="repassword" class="label"
-            >{{ "auth.rePassword" | translate }} :</label
-          >
-          <input
-            formControlName="rePassword"
-            type="password"
-            id="repassword"
-            class="input"
-            placeholder="type ur repassword"
-          />
-          <div
-            class="absolute end-2.5 bottom-2.5"
-            title="passshow"
-            appChangetypepass
-          >
-            <i class="fa-regular fa-eye text-purple-700 cursor-pointer"></i>
+          @let repassword = register.get('rePassword');
+          <label for="repassword" class="label">
+            {{ "auth.rePassword" | translate }} :
+          </label>
+          <div class="flex items-center relative">
+            <input
+              formControlName="rePassword"
+              type="password"
+              id="repassword"
+              class="input w-full"
+              placeholder="type your re-password"
+            />
+            <div
+              class="absolute end-2.5 top-1/2 -translate-y-1/2"
+              title="passshow"
+              appChangetypepass
+            >
+              <i class="fa-regular fa-eye text-black cursor-pointer"></i>
+            </div>
           </div>
 
-          @if(repassword?.getError('requipurple') && repassword?.touched){
+          @if (repassword?.getError('required') && repassword?.touched) {
           <div
-            class="my-3 flex items-center p-2 mb-4 text-sm text-purple-800 border border-purple-300 rounded-lg bg-purple-50 dark:text-purple-400"
+            class="my-3 flex items-center p-2 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400"
             role="alert"
           >
             <div>
-              <p class="text-[16px] text-purple-700">
-                {{ "auth.requipurple" | translate }}
+              <p class="text-[16px] text-red-700">
+                {{ "auth.required" | translate }}
               </p>
             </div>
           </div>
-          } @else if(register.getError('mismatch') && repassword?.touched){
-
-          <p class="text-[16px] text-purple-700">
+          } @else if (register.getError('mismatch') && repassword?.touched) {
+          <p class="text-[16px] text-red-700">
             {{ "auth.mismatch" | translate }}
           </p>
-
           }
         </div>
+
         <div class="my-6">
           @let phone =register.get('phone');
           <label for="phone" class="label"
@@ -166,16 +170,16 @@
           />
           @if(phone?.errors && phone?.touched){
           <div
-            class="my-3 flex items-center p-2 mb-4 text-sm text-purple-800 border border-purple-300 rounded-lg bg-purple-50 dark:text-purple-400"
+            class="my-3 flex items-center p-2 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400"
             role="alert"
           >
             <div>
-              @if(phone?.getError('requipurple')){
-              <p class="text-[16px] text-purple-700">
-                {{ "auth.requipurple" | translate }}
+              @if(phone?.getError('required')){
+              <p class="text-[16px] text-red-700">
+                {{ "auth.required" | translate }}
               </p>
               } @else if (phone?.getError('pattern')) {
-              <p class="text-[16px] text-purple-700">
+              <p class="text-[16px] text-red-700">
                 {{ "auth.num_valid" | translate }}
               </p>
               }
@@ -189,7 +193,7 @@
             <span><i class="fas fa-spin fa-spinner text-white"></i> </span>}
           </button>
           <div class="mb-2">
-            <a routerLink="/login" class="text-purple-900 hover:text-purple-500"
+            <a routerLink="/login" class="text-gray-900 hover:text-gray-500"
               >{{ "auth.already_have_account" | translate }}
             </a>
           </div>

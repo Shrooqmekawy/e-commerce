@@ -2,7 +2,7 @@
   <div class="title">
     <h1>
       {{ "home.show_our" | translate }}
-      <span class="text-purple-900"> {{ "home.product" | translate }}</span>
+      <span class="text-gray-900"> {{ "home.product" | translate }}</span>
     </h1>
   </div>
   <!-- search -->
@@ -22,13 +22,13 @@
         [(ngModel)]="searchTerm"
         type="search"
         id="default-search"
-        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-purple-500 focus:border-purple-600"
+        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-600"
         placeholder="Search category brands ......"
-        requipurple
+        required
       />
       <button
         type="submit"
-        class="text-white absolute end-2.5 bottom-2.5 bg-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-4 py-2"
+        class="text-white absolute end-2.5 bottom-2.5 bg-gray-700 hover:bg-gray-800 font-medium rounded-lg text-sm px-4 py-2"
       >
         {{ "home.search" | translate }}
       </button>
@@ -50,7 +50,7 @@
           />
         </div>
         <div class="card my-5 text-[18px]">
-          <span class="bg-purple-800 ms-10 px-1 text-white text-sm rounded-sm">
+          <span class="bg-gray-800 ms-10 px-1 text-white text-sm rounded-sm">
             {{ prod.slug.split("-", 2).join(" ") }}
           </span>
           <h2>{{ prod.category.name }}</h2>
@@ -70,7 +70,7 @@
       </div>
       <button
         (click)="addToCart(prod.id)"
-        class="cartadd bg-purple-900 text-white w-[90%] mx-auto block py-2 rounded-md"
+        class="bg-white text-black border-2 hover:bg-black hover:text-white border-black w-[90%] mx-auto block py-2 rounded-md cartadd"
       >
         {{ "home.add_to_cart" | translate }}
         <i class="fas fa-basket-shopping"></i>
@@ -78,7 +78,7 @@
       <button
         title="btn"
         (click)="postWhishlistItems(prod.id)"
-        class="icon absolute top-0 end-0 me-2 text-3xl text-purple-600"
+        class="icon absolute top-0 end-0 me-2 text-3xl text-red-800"
       >
         <i class="fa-heart" appChangeicon [itemId]="prod.id"></i>
       </button>
@@ -97,7 +97,7 @@
           />
         </div>
         <div class="card my-5 text-[18px]">
-          <span class="bg-purple-800 ms-10 px-1 text-white text-sm rounded-sm">
+          <span class="bg-gray-800 ms-10 px-1 text-white text-sm rounded-sm">
             {{ prod.slug.split("-", 2).join(" ") }}
           </span>
           <h2>{{ prod.category.name }}</h2>
@@ -117,7 +117,7 @@
       </div>
       <button
         (click)="addToCart(prod.id)"
-        class="cartadd bg-purple-900 text-white w-[90%] mx-auto block py-2 rounded-md"
+        class="bg-white text-black border-2 hover:bg-black hover:text-white border-black w-[90%] mx-auto block py-2 rounded-md cartadd"
       >
         {{ "home.add_to_cart" | translate }}
         <i class="fas fa-basket-shopping"></i>
@@ -125,7 +125,7 @@
       <button
         title="btn"
         (click)="postWhishlistItems(prod.id)"
-        class="icon absolute top-0 end-0 me-2 text-3xl text-purple-600"
+        class="icon absolute top-0 end-0 me-2 text-3xl text-red-800"
       >
         <i class="fa-heart" appChangeicon [itemId]="prod.id"></i>
       </button>
@@ -139,13 +139,13 @@
 >
   <button (click)="getpage(1)">
     <a
-      class="flex items-center py-3 px-4 justify-center leading-tight text-purple-800 bg-white border border-500 hover:bg-purple-600 hover:text-white rounded-full"
+      class="flex items-center py-2 px-3 justify-center leading-tight border border-gray-300 bg-black text-white rounded-lg"
       >1</a
     >
   </button>
   <button (click)="getpage(2)">
     <a
-      class="flex items-center py-3 px-4 justify-center leading-tight text-purple-800 bg-white border border-500 hover:bg-purple-600 hover:text-white rounded-full"
+      class="flex items-center py-2 px-3 justify-center leading-tight border border-gray-300 bg-black text-white rounded-lg"
       >2</a
     >
   </button>

@@ -39,14 +39,14 @@
           <h5 class="text-xl font-semibold tracking-tight text-gray-900">
             {{ detailsprod()!.title }}
           </h5>
-          <span class="text-sm text-gray-100 bg-purple-600 px-2 rounded-lg">
+          <span class="text-sm text-gray-100 bg-black px-2 rounded-lg">
             {{ detailsprod()!.category.name }}
           </span>
           <p class="text-lg tracking-tight text-gray-900">
             {{ detailsprod()!.description }}
           </p>
 
-          <div class="flex items-center mt-2.5 mb-5">
+          <div class="flex items-center mt-2.5 mb-5 relative">
             <div class="flex items-center space-x-1 rtl:space-x-reverse">
               <svg
                 class="w-4 h-4 text-yellow-300"
@@ -61,33 +61,35 @@
               </svg>
             </div>
             <span
-              class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm"
+              class="bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm"
               >{{ detailsprod()!.ratingsAverage }}</span
             >
           </div>
           <div class="items-center justify-between">
-            <div>
-              <span class="text-3xl font-bold text-gray-900">{{
-                detailsprod()!.price | currency : "GBP"
-              }}</span>
+            <div class="flex justify-between">
+              <div>
+                <span class="text-xl font-bold text-black">{{
+                  detailsprod()!.price | currency : "GBP"
+                }}</span>
+              </div>
+              <button
+                title="btn"
+                (click)="postWhishlistItems(detailsprod()!.id)"
+                class="icon text-3xl text-red-800"
+              >
+                <i
+                  class="fa-heart"
+                  appChangeicon
+                  [itemId]="detailsprod()!.id"
+                ></i>
+              </button>
             </div>
             <button
               (click)="addToCart(detailsprod()!.id)"
-              class="bg-purple-900 text-white mt-5 w-[90%] mx-auto block py-2 rounded-md"
+              class="bg-white text-black border-2 hover:bg-black hover:text-white border-black w-[90%] mx-auto block py-2 rounded-md mt-5"
             >
               {{ "home.add_to_cart" | translate }}
               <i class="fas fa-basket-shopping"></i>
-            </button>
-            <button
-              title="btn"
-              (click)="postWhishlistItems(detailsprod()!.id)"
-              class="icon absolute top-[50%] end-0 me-3 mt-3 text-3xl text-purple-400 focus:text-purple-600 translate-y-5"
-            >
-              <i
-                class="fa-heart"
-                appChangeicon
-                [itemId]="detailsprod()!.id"
-              ></i>
             </button>
           </div>
         </div>

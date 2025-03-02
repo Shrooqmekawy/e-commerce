@@ -1,5 +1,5 @@
 <nav
-  class="w-full bg-gradient-to-r via-fuchsia-600 from-fuchsia-700 to-pink-200 shadow-md shadow-fuchsia-400 dark:bg-fuchsia-900 rounded-b-md px-2 dark:text-white dark:shadow-none capitalize"
+  class="w-full bg-white dark:bg-black shadow-md rounded-b-md px-2 dark:text-white dark:shadow-none capitalize shadow-black text-black"
 >
   <div
     class="container max-w-screen-xl flex flex-wrap p-3 items-center justify-between"
@@ -22,7 +22,7 @@
         title="btn"
         data-collapse-toggle="navbar-default"
         type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden text-purple-900 dark:text-white"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden text-gray-900 dark:text-white"
         aria-controls="navbar-default"
         aria-expanded="false"
       >
@@ -97,21 +97,19 @@
         } @else{
         <li class="relative">
           <a routerLink="/cart" class="links text-xl"
-            ><i
-              class="fas fa-basket-shopping text-purple-800 dark:text-white"
-            ></i
+            ><i class="fas fa-basket-shopping text-black dark:text-white"></i
           ></a>
           <span
-            class="absolute text-white text-xs bg-purple-600 rounded-full px-1 font-semibold top-0 md:-end-[30%]"
+            class="absolute text-white text-xs bg-red-600 rounded-full px-1 font-semibold top-0 md:-end-[30%]"
             >{{ cartnumber() }}</span
           >
         </li>
         <li class="relative">
           <a routerLink="/wishlist" class="links text-xl"
-            ><i class="fas fa-heart text-purple-800 dark:text-white"></i
+            ><i class="fas fa-heart text-red-800 dark:text-white"></i
           ></a>
           <div
-            class="absolute text-white text-xs bg-purple-600 rounded-full px-1 font-semibold top-0 md:-end-[30%]"
+            class="absolute text-white text-xs bg-red-600 rounded-full px-1 font-semibold top-0 md:-end-[30%]"
           >
             {{ wishlistnumber() }}
           </div>
@@ -165,13 +163,13 @@
           >
             <li [class.lang]="currentLang('ar')" (click)="changedir('ar')">
               <a
-                class="block px-4 py-2 focus:bg-purple-700 focus:text-white cursor-pointer active:bg-purple-700"
+                class="block px-4 py-2 focus:bg-gray-700 focus:text-white cursor-pointer active:bg-gray-700"
                 >arabic</a
               >
             </li>
             <li [class.lang]="currentLang('en')" (click)="changedir('en')">
               <a
-                class="block px-4 py-2 focus:bg-purple-700 focus:text-white cursor-pointer active:bg-purple-700"
+                class="block px-4 py-2 focus:bg-gray-700 focus:text-white cursor-pointer active:bg-gray-700"
                 >english</a
               >
             </li>
