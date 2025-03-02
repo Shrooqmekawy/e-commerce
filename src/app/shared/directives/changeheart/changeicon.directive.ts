@@ -28,7 +28,7 @@ export class ChangeiconDirective implements AfterViewInit {
   }
 
   private updateIcon() {
-    this.el.nativeElement.classList.toggle('text-amber-800', this.isActive);
+    this.el.nativeElement.classList.toggle('text-purple-800', this.isActive);
     this.el.nativeElement.classList.toggle('fa-solid', this.isActive);
     this.el.nativeElement.classList.toggle('fa-regular', !this.isActive);
   }

@@ -8,7 +8,7 @@
   <div class="grid sm:grid-cols-3 md:grid-cols-6 gap-7 p-5">
     @for (catitems of categoryitem() ; track catitems._id) {
     <div
-      class="item relative overflow-hidden shadow-lg group rounded-md border border-amber-700"
+      class="item relative overflow-hidden shadow-lg group rounded-md border border-purple-700"
     >
       <div class="img">
         <img
@@ -20,7 +20,7 @@
       <div
         class="layer flex justify-center items-center absolute top-[150%] bottom-0 start-0 end-0 bg-white/90 text-center transition-all duration-500 ease-linear group-hover:top-0"
       >
-        <h2 class="text-xl font-semibold text-amber-800 capitalize">
+        <h2 class="text-xl font-semibold text-purple-800 capitalize">
           {{ catitems.name }}
         </h2>
       </div>

@@ -1,13 +1,13 @@
 <section class="section">
   <div
-    class="bg-[#fbf9f2] grid sm:grid-cols-1 md:grid-cols-2 rounded-lg gap-3 p-5 shadow-lg shadow-amber-800"
+    class="grid sm:grid-cols-1 md:grid-cols-2 rounded-lg gap-3 p-5 shadow-lg shadow-purple-800"
   >
     <div>
       <img class="w-full rounded-lg" src="/Img/cm.png" alt="login" />
     </div>
 
     <div class="form rounded-lg p-3 py-3">
-      <h1 class="font-medium text-3xl text-center text-amber-800">
+      <h1 class="font-medium text-3xl text-center text-purple-800">
         {{ "auth.login_now" | translate }}
       </h1>
       <form [formGroup]="login" (ngSubmit)="submitForm()">
@@ -25,16 +25,16 @@
           />
           @if(emailControl?.errors && emailControl?.touched){
           <div
-            class="my-3 flex items-center p-2 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400"
+            class="my-3 flex items-center p-2 mb-4 text-sm text-purple-800 border border-purple-300 rounded-lg bg-purple-50 dark:text-purple-400"
             role="alert"
           >
             <div>
-              @if(emailControl?.getError('required')){
-              <p class="text-[16px] text-red-700">
-                {{ "auth.required" | translate }}
+              @if(emailControl?.getError('requipurple')){
+              <p class="text-[16px] text-purple-700">
+                {{ "auth.requipurple" | translate }}
               </p>
               } @else if (emailControl?.getError('email')) {
-              <p class="text-[16px] text-red-700">
+              <p class="text-[16px] text-purple-700">
                 {{ "auth.valid_email" | translate }}
               </p>
               }
@@ -59,20 +59,20 @@
             title="passshow"
             appChangetypepass
           >
-            <i class="fa-regular fa-eye text-amber-700 cursor-pointer"></i>
+            <i class="fa-regular fa-eye text-purple-700 cursor-pointer"></i>
           </div>
           @if(password?.errors && password?.touched){
           <div
-            class="my-3 flex items-center p-2 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400"
+            class="my-3 flex items-center p-2 mb-4 text-sm text-purple-800 border border-purple-300 rounded-lg bg-purple-50 dark:text-purple-400"
             role="alert"
           >
             <div>
-              @if(password?.getError('required')){
-              <p class="text-[16px] text-red-700">
-                {{ "auth.required" | translate }}
+              @if(password?.getError('requipurple')){
+              <p class="text-[16px] text-purple-700">
+                {{ "auth.requipurple" | translate }}
               </p>
               } @else if (password?.getError('pattern')) {
-              <p class="text-[16px] text-red-700">
+              <p class="text-[16px] text-purple-700">
                 {{ "auth.valid_pass" | translate }}
               </p>
               }
@@ -85,7 +85,7 @@
           <div class="mb-5">
             <a
               routerLink="/forgetpassword"
-              class="text-amber-900 hover:text-amber-700"
+              class="text-purple-900 hover:text-purple-700"
               >{{ "auth.forgot_password" | translate }}
             </a>
           </div>
@@ -96,10 +96,10 @@
         </div>
 
         @if (errormsg){
-        <p class="text-[16px] text-amber-800 text-center">{{ errormsg }}</p>
+        <p class="text-[16px] text-purple-800 text-center">{{ errormsg }}</p>
         }@else {
 
-        <p class="text-[16px] text-amber-800 text-center">{{ successmsg }}</p>
+        <p class="text-[16px] text-purple-800 text-center">{{ successmsg }}</p>
         }
       </form>
     </div>

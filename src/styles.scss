@@ -6,19 +6,19 @@
 @import "ngx-toastr/toastr";
 
 .btn {
-  @apply bg-amber-700 border-0 rounded-lg text-white px-6 py-2 hover:bg-amber-800 transition-all duration-300 my-3;
+  @apply bg-purple-700 border-0 rounded-lg text-white px-6 py-2 hover:bg-purple-800 transition-all duration-300 my-3;
 }
 .label {
-  @apply block mb-2 text-[16px]   text-amber-700;
+  @apply block mb-2 text-[16px]   text-purple-700;
 }
 .input {
-  @apply text-black bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-amber-500  focus:border-amber-500 focus:shadow-sm  w-full p-2.5;
+  @apply text-white bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-purple-500  focus:border-purple-500 focus:shadow-sm  w-full p-2.5;
 }
 .links {
   @apply block py-2 px-3 dark:text-white text-black md:p-0;
 }
 .lang {
-  background: #b95e04;
+  background: #9a03b5;
   color: whitesmoke;
   margin: 0 5px;
   @apply rounded-md;
@@ -42,14 +42,19 @@
 @media (prefers-color-scheme: light) {
 }
 span {
-  @apply text-amber-700;
+  @apply text-purple-700;
 }
 .section {
-  @apply container capitalize text-black my-10 rounded-md shadow-sm shadow-amber-800 px-10 py-5;
+  @apply container capitalize text-black my-10 rounded-md shadow-sm shadow-purple-800 px-10 py-5;
 }
 .activelink {
-  @apply bg-amber-600  text-white px-2 rounded-lg dark:text-amber-900 dark:bg-white;
+  @apply bg-purple-600  text-white px-2 rounded-lg dark:text-purple-900 dark:bg-white;
 }
 .responsive {
   @apply grid  grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 p-5;
+}
+.arsenal {
+  font-family: "Arsenal SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

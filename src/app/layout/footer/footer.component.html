@@ -1,190 +1,64 @@
-<footer class="bg-white dark:bg-black text-black border-t-amber-900 px-3">
-  <div class="w-full max-w-screen-xl mx-auto md:py-2">
-    <div class="sm:flex sm:items-center sm:justify-between">
-      <a class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-        <img
-          src="/Img/bazaar-logo-dark-amber.png"
-          class="h-10"
-          alt="Flowbite Logo"
-        />
-        <span
-          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-          >Store</span
-        >
-      </a>
-      <div class="flex mt-5 gap-x-4 items-center">
-        <div>
-          <img class="w-14" src="/Img/get-apple-store.png" alt="img" />
-        </div>
-
-        <div>
-          <img class="w-14" src="/Img/get-google-play.png" alt="img" />
-        </div>
-      </div>
-      <div class="flex-col gap-3">
-        <div class="source mb-5">
-          <ul
-            class="flex justify-end flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
+<footer
+  class="bg-white rounded-lg shadow-sm dark:bg-black p-4 text-black dark:text-white"
+>
+  <div class="w-full max-w-screen-xl mx-auto p-2 md:py-2">
+    <div class="sm:flex sm:items-center mx-5 sm:justify-between">
+      <ul
+        class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-white"
+      >
+        <li>
+          <a href="#" class="hover:underline me-4 md:me-6">
+            {{ "footer.resources" | translate }}</a
           >
-            <li>
-              <p class="hover:underline me-4 md:me-6">
-                {{ "footer.resources" | translate }}
-              </p>
-            </li>
-            <li>
-              <p class="hover:underline me-4 md:me-6">
-                {{ "footer.privacy_policy" | translate }}
-              </p>
-            </li>
-            <li>
-              <p class="hover:underline me-4 md:me-6">
-                {{ "footer.legal" | translate }}
-              </p>
-            </li>
-            <li>
-              <p class="hover:underline">
-                {{ "footer.contact_us" | translate }}
-              </p>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <ul
-            class="font-medium dark:text-white text-black p-3 flex justify-end items-center md:p-0 mt-4 rtl:-rotate-90 md:mt-0"
+        </li>
+        <li>
+          <a href="#" class="hover:underline me-4 md:me-6">{{
+            "footer.privacy_policy" | translate
+          }}</a>
+        </li>
+        <li>
+          <a href="#" class="hover:underline me-4 md:me-6">
+            {{ "footer.legal" | translate }}</a
           >
-            <li class="mx-2">
-              <a aria-current="page">
-                <i class="fab fa-facebook"></i>
-              </a>
-            </li>
-            <li class="mx-2">
-              <a aria-current="page">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </li>
-            <li class="mx-2">
-              <a aria-current="page">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="mx-2">
-              <a aria-current="page">
-                <i class="fab fa-github"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="flex mt-5 justify-end gap-x-4 items-center">
-          <div><img class="w-10" src="/Img/mastercard.webp" alt="img" /></div>
+        </li>
+        <li>
+          <a href="#" class="hover:underline">
+            {{ "footer.contact_us" | translate }}</a
+          >
+        </li>
+      </ul>
+      <div class="imgget">
+        <div class="flex mt-5 gap-x-4">
+          <h1>Get Bazaar App</h1>
+          <div>
+            <img class="w-20" src="/Img/get-apple-store.png" alt="img" />
+          </div>
 
-          <div><img class="w-10" src="/Img/paypal.png" alt="img" /></div>
+          <div>
+            <img class="w-20" src="/Img/get-google-play.png" alt="img" />
+          </div>
+        </div>
+        <div class="flex mt-5 gap-x-4 items-center">
+          <h1 class="capitalize">can payment by</h1>
+          <div>
+            <img class="w-10" src="/Img/American-Express-Color.png" alt="img" />
+          </div>
+
+          <div>
+            <img class="w-10" src="/Img/paypal.png" alt="img" />
+          </div>
+          <div>
+            <img class="w-10" src="/Img/mastercard.webp" alt="img" />
+          </div>
         </div>
       </div>
     </div>
 
-    <hr
-      class="my-6 border-white-200 sm:mx-auto dark:border-white-700 lg:my-8 pb-2"
-    />
+    <hr class="my-6 border-black sm:mx-auto dark:border-white lg:my-8" />
     <div class="text-center">
-      <p class="text-lg text-center dark:text-white capitalize">
-        created by <span class="text-amber-800">haidy mekawy</span> in © 2025
+      <p class="text-md text-center dark:text-white capitalize">
+        created by <span class="text-purple-600">haidy mekawy</span> in © 2025
       </p>
     </div>
   </div>
 </footer>
-
-<!-- <footer class="bg-white dark:bg-black text-black border-t-amber-900">
-  <div class="mx-auto w-full max-w-screen-xl p-4 py-3 lg:py-4">
-    <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-      <div class="dark:text-white">
-        <h2 class="mb-6 text-sm font-semibold uppercase">
-          {{ "footer.resources" | translate }}
-        </h2>
-        <ul class="dark:text-white-400 font-medium">
-          <li class="mb-4">
-            <a class="hover:underline">{{ "footer.contact_us" | translate }}</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white">
-          {{ "footer.follow_us" | translate }}
-        </h2>
-        <ul class="dark:text-white-400 font-medium">
-          <li class="mb-4">
-            <a
-              href="#"
-              class="hover:underline text-sm font-semibold uppercase dark:text-white"
-              >{{ "footer.github" | translate }}
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="hover:underline text-sm font-semibold uppercase dark:text-white"
-              >{{ "footer.discord" | translate }}</a
-            >
-          </li>
-        </ul>
-      </div>
-      <div class="dark:text-white">
-        <h2 class="mb-6 text-sm font-semibold uppercase dark:text-white">
-          {{ "footer.legal" | translate }}
-        </h2>
-        <ul class="dark:text-white-400 font-medium">
-          <li class="mb-4">
-            <a href="#" class="hover:underline">{{
-              "footer.privacy_policy" | translate
-            }}</a>
-          </li>
-          <li>
-            <a href="#" class="hover:underline">{{
-              "footer.terms_conditions" | translate
-            }}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="flex mt-5 sm:justify-self-center gap-x-4 items-center">
-      <div>
-        <ul
-          class="font-medium ms-2 dark:text-white text-black p-3 flex md:p-0 align-middle mt-4 md:space-x-8 rtl:space-x-reverse md:mt-0"
-        >
-          <li class="mx-2">
-            <a aria-current="page">
-              <i class="fab fa-facebook"></i>
-            </a>
-          </li>
-          <li class="mx-2">
-            <a aria-current="page">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </li>
-          <li class="mx-2">
-            <a aria-current="page">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="mx-2">
-            <a aria-current="page">
-              <i class="fab fa-github"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div><img class="w-20" src="/Img/mastercard.webp" alt="img" /></div>
-
-      <div><img class="w-20" src="/Img/paypal.png" alt="img" /></div>
-    </div>
-    <hr
-      class="my-6 border-white-200 sm:mx-auto dark:border-white-700 lg:my-8"
-    />
-
-    <div class="text-center">
-      <p class="text-lg text-center dark:text-white capitalize">
-        created by <span class="text-amber-800">haidy mekawy</span> in © 2025
-      </p>
-    </div>
-  </div>
-</footer> -->
