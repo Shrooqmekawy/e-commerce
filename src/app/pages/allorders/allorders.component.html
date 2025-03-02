@@ -3,8 +3,8 @@
     <h1>{{ "home.my_order_item" | translate }}</h1>
   </div>
   <div class="responsive">
-    @if(orderItemsinformaion()){ @for (item of orderItemsinformaion().slice(-5);
-    track $index) {
+    @if(orderItemsinformaion()){ @for (item of
+    orderItemsinformaion().slice(-5).reverse(); track $index) {
 
     <div
       class="item p-5 rounded-lg bg-white shadow-lg shadow-gray-600 my-10 capitalize text-lg break-words"
@@ -12,7 +12,7 @@
       <div class="flex justify-between my-5">
         <h1>
           {{ "allorders.numoforder" | translate }}:
-          <span>{{ $index - 1 }}</span>
+          <span>{{ $index }}</span>
         </h1>
         <p>
           {{ "allorders.product" | translate }}:
