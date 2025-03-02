@@ -11,6 +11,7 @@ import { AllordersService } from '../../core/services/allorders/allorders.servic
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-payment',
@@ -29,6 +30,7 @@ export class PaymentComponent implements OnInit {
   success: string = ' ';
   isLoading: boolean = false;
   checkoutforms!: FormGroup;
+  errormsg: string = '';
 
   ngOnInit(): void {
     this.getID();
@@ -46,10 +48,7 @@ export class PaymentComponent implements OnInit {
   formvalue(): void {
     this.checkoutforms = this.formbuilder.group({
       details: [null],
-      phone: [
-        null,
-        [Validators.required, Validators.pattern(/^01(0|1|2|5)[0-9]{8}/)],
-      ],
+      phone: [null, [Validators.required]],
       city: [null, [Validators.required]],
     });
   }
@@ -70,7 +69,15 @@ export class PaymentComponent implements OnInit {
             this.isLoading = false;
             localStorage.setItem('userorders', res.data.user);
           },
+          error: (err: HttpErrorResponse) => {
+            console.log(err);
+            this.errormsg = err.error.message;
+            this.isLoading = false;
+          },
         });
+    } else {
+      this.checkoutforms.markAllAsTouched();
+      this.isLoading = false;
     }
   }
 
@@ -90,7 +97,15 @@ export class PaymentComponent implements OnInit {
             }
             this.isLoading = false;
           },
+          error: (err: HttpErrorResponse) => {
+            console.log(err);
+            this.errormsg = err.error.message;
+            this.isLoading = false;
+          },
         });
+    } else {
+      this.checkoutforms.markAllAsTouched();
+      this.isLoading = false;
     }
   }
 }

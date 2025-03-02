@@ -1,5 +1,5 @@
 <nav
-  class="w-full bg-white dark:bg-black shadow-md rounded-b-md px-2 dark:text-white dark:shadow-none capitalize shadow-black text-black"
+  class="w-full bg-[#c85e5e] dark:bg-[#a54646] shadow-md rounded-b-md px-2 dark:text-white dark:shadow-none capitalize shadow-[#c85e5e] text-black"
 >
   <div
     class="container max-w-screen-xl flex flex-wrap p-3 items-center justify-between"
@@ -7,13 +7,8 @@
     <div class="img flex justify-between items-center">
       <div routerLink="/home" title="home" class="ms-3 w-[20%]">
         <img
-          src="/Img/bazaar-logo-removebg-preview.png"
-          class="block dark:hidden w-full"
-          alt="Light Mode Logo"
-        />
-        <img
           src="/Img/bazaar-logo-white.png"
-          class="hidden dark:block w-full"
+          class="w-full"
           alt="Dark Mode Logo"
         />
       </div>
@@ -25,18 +20,20 @@
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden text-gray-900 dark:text-white"
         aria-controls="navbar-default"
         aria-expanded="false"
+        (click)="togglenavbar()"
       >
         <i class="fas fa-bars text-2xl bg-transparent"></i>
       </button>
     </div>
 
     <div
-      class="hidden flex-grow items-center justify-around w-full md:flex md:w-auto"
+      [class]="{ hidden: !isnavOpen, visible: isnavOpen }"
+      class="flex-grow items-center justify-between w-full md:flex md:w-auto"
       id="navbar-default"
     >
       @if(isLogin()){
       <ul
-        class="ms-auto font-medium flex flex-col p-4 md:p-0 mt-4 justify-center md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 text-lg"
+        class="ms-auto font-medium flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 text-lg"
       >
         <li>
           <a
@@ -72,10 +69,13 @@
       </ul>
       }
       <!-- logo -->
-      <ul
+      <!-- <ul
         class="ms-auto font-medium flex flex-col-reverse p-4 md:p-0 mt-4 justify-center rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0"
+      > -->
+      @if(!isLogin()){
+      <ul
+        class="ms-auto font-medium flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 text-lg"
       >
-        @if(!isLogin()){
         <li>
           <a
             routerLinkActive="activelink"
@@ -94,22 +94,27 @@
             >{{ "navbar.register" | translate }}</a
           >
         </li>
-        } @else{
+      </ul>
+
+      } @else{
+      <ul
+        class="ms-auto font-medium flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 text-lg"
+      >
         <li class="relative">
-          <a routerLink="/cart" class="links text-xl"
-            ><i class="fas fa-basket-shopping text-black dark:text-white"></i
+          <a routerLink="/cart" class="links text-2xl"
+            ><i class="fas fa-basket-shopping text-black"></i
           ></a>
           <span
-            class="absolute text-white text-xs bg-red-600 rounded-full px-1 font-semibold top-0 md:-end-[30%]"
+            class="absolute text-black text-xs bg-white rounded-full px-1 font-semibold top-0 md:-end-[30%]"
             >{{ cartnumber() }}</span
           >
         </li>
         <li class="relative">
-          <a routerLink="/wishlist" class="links text-xl"
-            ><i class="fas fa-heart text-red-800 dark:text-white"></i
+          <a routerLink="/wishlist" class="links text-2xl"
+            ><i class="fa-regular fa-heart text-black"></i
           ></a>
           <div
-            class="absolute text-white text-xs bg-red-600 rounded-full px-1 font-semibold top-0 md:-end-[30%]"
+            class="absolute text-black text-xs bg-white rounded-full px-1 font-semibold top-0 md:-end-[30%]"
           >
             {{ wishlistnumber() }}
           </div>
@@ -125,76 +130,74 @@
             >{{ "navbar.logout" | translate }}</a
           >
         </li>
-        }
       </ul>
-      <div class="endnavbar flex items-center">
-        <div
-          id="dropdownDefaultButton"
-          data-dropdown-toggle="dropdown"
-          class="text-black dark:text-white focus:outline-none font-medium rounded-lg text-sm text-center inline-flex items-center justify-end ms-5"
-          role="button"
-        >
-          {{ "navbar.lang" | translate }}
-          <svg
-            class="w-2.5 h-2.5 ms-3"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 10 6"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m1 1 4 4 4-4"
-            />
-          </svg>
-        </div>
 
-        <!-- Dropdown menu -->
-        <div
-          id="dropdown"
-          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44"
-        >
-          <ul
-            class="py-2 text-sm text-black"
-            aria-labelledby="dropdownDefaultButton"
-          >
-            <li [class.lang]="currentLang('ar')" (click)="changedir('ar')">
-              <a
-                class="block px-4 py-2 focus:bg-gray-700 focus:text-white cursor-pointer active:bg-gray-700"
-                >arabic</a
-              >
-            </li>
-            <li [class.lang]="currentLang('en')" (click)="changedir('en')">
-              <a
-                class="block px-4 py-2 focus:bg-gray-700 focus:text-white cursor-pointer active:bg-gray-700"
-                >english</a
-              >
-            </li>
-          </ul>
-        </div>
+      }
+      <!-- </ul> -->
 
-        <button
-          (click)="getTheme()"
-          title="darkmode"
-          class="dark ms-5 dark:text-white text-black rounded-md text-lg"
-          role="checkbox"
-          aria-checked="false"
-        >
-          @if (!isDark) {
-          <div class="moon">
-            <i class="fa-solid fa-moon transition-all duration-300 p-2"> </i>
+      <div class="flex-col flex relative">
+        <div class="endnavbar items-center flex">
+          <div
+            (click)="toggleDropdown()"
+            class="text-black focus:outline-none font-medium rounded-lg text-md text-center items-center flex justify-end ms-5"
+            role="button"
+          >
+            {{ "navbar.lang" | translate }}
+            <svg
+              class="w-2.5 h-2.5 ms-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 10 6"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 4 4 4-4"
+              />
+            </svg>
           </div>
 
-          } @else {
-          <div class="sun">
-            <i class="fa-solid fa-sun transition-all duration-300 p-2"> </i>
+          <!-- Dropdown menu -->
+          <div
+            id="dropdown"
+            class="z-10 absolute right-0 top-full mt-1 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44"
+            [class]="{ hidden: !isDropdownOpen, block: isDropdownOpen }"
+          >
+            <ul class="py-2 text-sm text-black">
+              <li [class.lang]="currentLang('ar')" (click)="changedir('ar')">
+                <a class="block px-4 py-2 focus:text-white cursor-pointer"
+                  >Arabic</a
+                >
+              </li>
+              <li [class.lang]="currentLang('en')" (click)="changedir('en')">
+                <a class="block px-4 py-2 focus:text-white">English</a>
+              </li>
+            </ul>
           </div>
-          }
-        </button>
+        </div>
       </div>
+
+      <button
+        (click)="getTheme()"
+        title="darkmode"
+        class="dark ms-5 text-black rounded-md text-lg"
+        role="checkbox"
+        aria-checked="false"
+      >
+        @if (!isDark) {
+        <div class="moon">
+          <i class="fa-solid fa-moon transition-all duration-300 p-2"> </i>
+        </div>
+
+        } @else {
+        <div class="sun">
+          <i class="fa-solid fa-sun transition-all duration-300 p-2"> </i>
+        </div>
+        }
+      </button>
     </div>
   </div>
 </nav>

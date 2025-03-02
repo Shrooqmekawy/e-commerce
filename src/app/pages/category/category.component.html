@@ -8,7 +8,8 @@
   <div class="grid sm:grid-cols-3 md:grid-cols-6 gap-7 p-5">
     @for (catitems of categoryitem() ; track catitems._id) {
     <div
-      class="item relative overflow-hidden shadow-lg group rounded-md border border-gray-700"
+      class="item relative overflow-hidden shadow-lg group rounded-md border border-gray-900"
+      [routerLink]="['/products']"
     >
       <div class="img">
         <img

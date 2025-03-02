@@ -8,10 +8,11 @@ import {
 import { BrandsService } from '../../core/services/brands/brands.service';
 import { Ibrands } from '../../shared/interfaces/ibrands';
 import { TranslatePipe } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-brands',
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, RouterLink],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.scss',
 })

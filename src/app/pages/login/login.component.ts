@@ -54,13 +54,14 @@ export class LoginComponent {
               this.router.navigate(['/welcome']);
               localStorage.setItem('userToken', res.token);
               this.authservice.getToken();
-            }, 3000);
+            }, 1000);
           }
           this.isLoading = false;
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
           this.errormsg = err.error.message;
+
           this.isLoading = false;
         },
       });

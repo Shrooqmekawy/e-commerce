@@ -5,7 +5,7 @@ import { finalize } from 'rxjs';
 
 export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
   const laodscr = inject(NgxSpinnerService);
-  if (req.url.includes('cart')) {
+  if (req.url.includes('cart') || req.url.includes('welcome')) {
     laodscr.hide();
   } else {
     laodscr.show();

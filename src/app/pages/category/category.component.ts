@@ -8,10 +8,11 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-category',
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, RouterLink],
   templateUrl: './category.component.html',
   styleUrl: './category.component.scss',
 })

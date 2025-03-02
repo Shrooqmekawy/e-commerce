@@ -14,6 +14,6 @@ export class WelcomeComponent {
   ngOnInit() {
     setTimeout(() => {
       this.router.navigate(['/home']);
-    }, 5000);
+    }, 3000);
   }
 }

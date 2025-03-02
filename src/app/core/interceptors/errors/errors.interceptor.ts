@@ -8,8 +8,10 @@ export const errorsInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((err) => {
+      // if (!req.url.includes('cart') && !req.url.includes('wishlist')) {
+      //   toastr.error(err.error.message, 'bazaar');
+      // }
       toastr.error(err.error.message, 'bazaar');
-
       return throwError(() => err);
     })
   );

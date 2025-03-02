@@ -36,6 +36,8 @@ export class NavbarComponent implements OnInit {
   wishlistnumber: Signal<number> = computed(() =>
     this.whishlistservice.numOfWishlistItem()
   );
+  isDropdownOpen: boolean = false;
+  isnavOpen: boolean = false;
   ngOnInit(): void {
     this.getnumcart();
     this.getnumlist();
@@ -66,9 +68,17 @@ export class NavbarComponent implements OnInit {
   // change language
   changedir(lang: string): void {
     this.translationService.changeLanguageTranslation(lang);
+    this.isDropdownOpen = false;
   }
 
   currentLang(lang: string): boolean {
     return this.translateService.currentLang === lang;
+  }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  togglenavbar() {
+    this.isnavOpen = !this.isnavOpen;
   }
 }

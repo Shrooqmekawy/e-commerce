@@ -90,5 +90,8 @@
         {{ "home.cash" | translate }}
       </button>
     </div>
+    @if (errormsg){
+    <p class="text-[16px] text-red-800 text-center">{{ errormsg }}</p>
+    }
   </form>
 </section>
