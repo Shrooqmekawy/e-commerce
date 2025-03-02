@@ -76,6 +76,34 @@ export class HomeComponent implements OnInit {
       },
     },
   };
+  customOptionsbrand: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: false,
+
+    navSpeed: 300,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    rtl: true,
+
+    responsive: {
+      0: {
+        items: 3,
+      },
+      400: {
+        items: 5,
+      },
+      740: {
+        items: 5,
+      },
+      940: {
+        items: 8,
+      },
+    },
+  };
 
   customOptionsProduct: OwlOptions = {
     loop: true,
