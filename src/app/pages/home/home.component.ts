@@ -185,6 +185,7 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         this.toastr.success(res.message, 'bazaar');
         this.cartService.cartItemCount.set(res.numOfCartItems);
+        localStorage.setItem('userorders', res.data.cartOwner);
       },
     });
   }

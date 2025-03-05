@@ -13,7 +13,7 @@ export class AllordersService {
   // visa
   getorder(id: string, data: any): Observable<any> {
     return this.http.post(
-      `${environment.base_url}/api/v1/orders/checkout-session/${id}?url=http://localhost:4200`,
+      `${environment.base_url}/api/v1/orders/checkout-session/${id}?url=${window.location.origin}`,
       {
         shippingAddress: data,
       }

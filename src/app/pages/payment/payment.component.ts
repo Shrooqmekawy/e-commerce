@@ -64,10 +64,8 @@ export class PaymentComponent implements OnInit {
                 this.success == res.status;
                 open(res.session.url, '_self');
               }, 300);
-              console.log(res);
             }
             this.isLoading = false;
-            localStorage.setItem('userorders', res.data.user);
           },
           error: (err: HttpErrorResponse) => {
             console.log(err);
@@ -93,7 +91,6 @@ export class PaymentComponent implements OnInit {
                 this.toastr.success('Payment successful', 'bazaar');
                 this.route.navigate(['./allorders']);
               }, 300);
-              localStorage.setItem('userorders', res.data.user);
             }
             this.isLoading = false;
           },

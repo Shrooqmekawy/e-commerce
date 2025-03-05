@@ -50,6 +50,7 @@ export class ProductsComponent {
       next: (res) => {
         this.toastr.success(res.message, 'bazaar');
         this.cartService.cartItemCount.set(res.numOfCartItems);
+        localStorage.setItem('userorders', res.data.cartOwner);
       },
     });
   }
