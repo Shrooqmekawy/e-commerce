@@ -42,6 +42,7 @@ export class WishlistComponent implements OnInit {
       next: (res) => {
         this.toastr.success(res.message, 'bazaar');
         this.cartservice.cartItemCount.set(res.numOfCartItems);
+        localStorage.setItem('userorders', res.data.cartOwner);
       },
     });
   }

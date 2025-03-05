@@ -48,6 +48,7 @@ export class DetailsComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.toastr.success(res.message, 'bazaar');
+        localStorage.setItem('userorders', res.data.cartOwner);
       },
     });
   }
